@@ -33,24 +33,24 @@ function onDeviceReady() {
             }
 initializePlugin: function () {
 
-//The ldapUserName and ldapPassWord should be obtained from User in index.html.
+ //The ldapUserName and ldapPassWord should be obtained from User in index.html.
  //These params can be passed as "" in case of security level 1 and security level 2.
  var ldapUserName="";
  var ldapPassWord="";
 
        // Show a loading Image while a plugin is initializing. This can be a gif Image showing progress.
-      //  var launchImageID = document.getElementById('launchImage');
+       //  var launchImageID = document.getElementById('launchImage');
        // launchImageID.style.display = 'block';
         AppMobiCloud.plugin.initialize(function (data) {//success callback
                     alert("AppMobi library initialized successfully");
                     //Hide the loading Image once Plugin initialise successfully.
-                   // var launchImageID = document.getElementById("launchImage");
-                   // launchImageID.style.display = 'none';
+                    // var launchImageID = document.getElementById("launchImage");
+                    // launchImageID.style.display = 'none';
         }, function (data) {//error callback
                     alert(data.message);
                     //Hide the loading Image if Plugin initialized failed.
-                   // var launchImageID = document.getElementById("launchImage");
-                   // launchImageID.style.display = 'none';
+                    // var launchImageID = document.getElementById("launchImage");
+                    // launchImageID.style.display = 'none';
         }, ldapUserName,ldapPassWord);  document.addEventListener('deviceready', onDeviceReady, false);
 ```
 
@@ -316,7 +316,7 @@ var myNotifications = AppMobiCloud.notification.getNotificationsList();
                  } catch (e) {
                      AppMobiCloud.notification.alert("Caught Exception For: " + e.message);
                      //Always mark the messages as read and delete them.
-                     //If you dont, your users will get them over and over again.
+                     //If you don't, your users will get them over and over again.
                      AppMobiCloud.notification.deletePushNotifications(msgObj.id);
                  }
              }
