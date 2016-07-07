@@ -21,13 +21,13 @@ Appmobi provides Mobile Application Data Encryption and User Authentication out 
 
 ###LDAP
 
-For Using LDAP Authentication, A developer must configure his LDAP server for his app in Appmobi Management Portal. That in turn allows user to provide server credentails for login in to the App. 
- 
+For Using LDAP Authentication, A developer must configure his LDAP server for his app in Appmobi Management Portal. That in turn allows user to provide server credentails for login in to the App.
+
 ####initializePlugin using LDAP
 
 Initialize the AppMobi Cordova plugin onDeviceReady() event is executed.
 
-```
+```javascript
 function onDeviceReady() {
                initializePlugin();
             }
@@ -37,8 +37,8 @@ initializePlugin: function () {
  //These params can be passed as "" in case of security level 1 and security level 2.
  var ldapUserName="";
  var ldapPassWord="";
- 
-       // Show a loading Image while a plugin is initializing. This can be a gif Image showing progress. 
+
+       // Show a loading Image while a plugin is initializing. This can be a gif Image showing progress.
       //  var launchImageID = document.getElementById('launchImage');
        // launchImageID.style.display = 'block';
         AppMobiCloud.plugin.initialize(function (data) {//success callback
@@ -86,7 +86,7 @@ The final option puts control of the update completely in the hands of the devel
 
 ####EXAMPLE
 
-```
+```javascript
 /* OVER THE AIR UPDATE CODE */
 // This event handler captures the event thrown when an update becomes available
 // while an application is running document.addEventListener("appMobi.device.update.available",onUpdateAvailable,false);
@@ -111,11 +111,11 @@ SecureDataStore allows you to save your Application Data securely on device and 
 
  saveData method is used to store data securely on the device and/or server. To use this functionality, user needs to enable app data security in your application security settings on the enterprise management portal.
 
-```
+```javascript
 AppMobiCloud.secureData.saveData(key, value,isMasterData, saveToServer, isJSON);
 ```
 
-**Parameters**	
+**Parameters**
 
  - **key** : The unique identifier for a particular key which user wants to store securely onto the device and/or to server.
  - **value** : Text data which is assigned to a particular key.
@@ -126,7 +126,7 @@ AppMobiCloud.secureData.saveData(key, value,isMasterData, saveToServer, isJSON);
 
 **EXAMPLE**
 
-```
+```javascript
 function saveSecureData() {
             var key = prompt("Please enter Key", "BP");
             var dta = {};
@@ -172,20 +172,20 @@ function saveSecureData() {
               alert("key : "+data.key+"\n value : "+data.value+"\n message : "+data.message);
             else
                alert("Message : "+data.message);
-        
+
         }
 ```
-     
+
 ###syncData
 
  syncData method is used to transfer all the local data from device which is not sync to server. Once data is synced with server, incremental local data will be deleted from device. To use this functionality, user needs to enable app data security in your application security settings on the enterprise management portal.
 
-```
+```javascript
 AppMobiCloud.secureData.syncData();
 ```
 
 **EXAMPLE**
-```
+```javascript
 // Call  AppMobiCloud.secureData.syncData(); api to sync data to server.
 function syncSecureData(){
         AppMobiCloud.secureData.syncData();
@@ -200,24 +200,24 @@ document.addEventListener("appMobi.securedata.sync", onSecureDataSync, false);
 
  readData method is used to read stored data from device. To use this functionality, user needs to enable app data security in your application security settings on the enterprise management portal.
 
-```
+```javascript
 AppMobiCloud.secureData.readData(key,isMasterData);
 ```
 
-**Parameters**	
+**Parameters**
 
  - **key** : The identifier for a particular key which user wants to read the secure data from device.
  - **isMasterData**  : Pass 1 if you want to read data from Master data otherwise pass 0 if you want to read data which is not synced with server yet.
 
 **EXAMPLE**
 
-```
+```javascript
 var myKey = “BP”;
         var isMasterData = 0;
         readSecureData(myKey,isMasterData);
 
         function readSecureData(key,isMasterData){
-            AppMobiCloud.secureData.readData(key,isMasterData); 
+            AppMobiCloud.secureData.readData(key,isMasterData);
         }
 
         function onSecureDataRead(data) {
@@ -239,12 +239,12 @@ var myKey = “BP”;
                 } catch (e) {
                     AppMobiCloud.notification.alert("Caught Exception For: " + e.message);
                 }
-  
+
             }
             else
                 alert(data.message);
         }
-        
+
         document.addEventListener("appMobi.securedata.read", onSecureDataRead, false);
 
 ```
@@ -266,14 +266,14 @@ New to mobile development and looking for a place to start? Our Quickstart guide
  - [Creating an App in Android Studio](https://docs.appmobi.com/guides/quickstart-android/index.html#creating-an-app-in-android-studio)
 
 ###Quickstart Guide for iOS Development
--  [Creating a new App on your Appmobi Stack](https://docs.appmobi.com/guides/quickstart-ios/index.html#creating-a-new-app-on-private-stack) 
--  [Creating a new iOS App on Cordova using CLI v5.0.0](https://docs.appmobi.com/guides/quickstart-ios/index.html#creating-a-new-ios-app-on-cordova-using-cli-v5-0-0) 
--  [Creating a new iOS App on Apple Developer Site](https://docs.appmobi.com/guides/quickstart-ios/index.html#creating-a-new-ios-app-on-apple-developer-site) 
--  [Generating Push SSL certificate](https://docs.appmobi.com/guides/quickstart-ios/index.html#generating-push-ssl-certificate) 
--  [Generating Provisioning Profiles](https://docs.appmobi.com/guides/quickstart-ios/index.html#generating-provisioning-profiles) 
+-  [Creating a new App on your Appmobi Stack](https://docs.appmobi.com/guides/quickstart-ios/index.html#creating-a-new-app-on-private-stack)
+-  [Creating a new iOS App on Cordova using CLI v5.0.0](https://docs.appmobi.com/guides/quickstart-ios/index.html#creating-a-new-ios-app-on-cordova-using-cli-v5-0-0)
+-  [Creating a new iOS App on Apple Developer Site](https://docs.appmobi.com/guides/quickstart-ios/index.html#creating-a-new-ios-app-on-apple-developer-site)
+-  [Generating Push SSL certificate](https://docs.appmobi.com/guides/quickstart-ios/index.html#generating-push-ssl-certificate)
+-  [Generating Provisioning Profiles](https://docs.appmobi.com/guides/quickstart-ios/index.html#generating-provisioning-profiles)
 
 ###Quickstart Guide for OAuth Integration
- - [Google OAuth Integration](https://docs.appmobi.com/guides/quickstart-oauth/index.html#google-oauth-integration) 
+ - [Google OAuth Integration](https://docs.appmobi.com/guides/quickstart-oauth/index.html#google-oauth-integration)
  - [Facebook OAuth Integration](https://docs.appmobi.com/guides/quickstart-oauth/index.html#facebook-oauth-integration)
 
 ###Plugin Variables
@@ -291,13 +291,13 @@ Our plugin makes use of Cordova plugin variables to communicate with the Appmobi
 ####getNotificationsList
 
  Use this method to get a list of id keys to obtain access to the list of available notifications for this user.
-```
+```javascript
 var notificationArray = AppMobiCloud.notification.getNotificationsList();
 ```
- 
+
 **EXAMPLE**
 
-```
+```javascript
 var myNotifications = AppMobiCloud.notification.getNotificationsList();
          var len = myNotifications.length;
          if (len > 0) {
@@ -322,21 +322,21 @@ var myNotifications = AppMobiCloud.notification.getNotificationsList();
              }
          }
 ```
-         
+
 ####getNotificationData
 
  Use this method to get any data associated with a notification.
-```
+```javascript
 var messageObject = AppMobiCloud.notification.getNotificationData(id);
 ```
- 
+
 **Parameter**
 
 **id :** The id parameter of the message object you would like to get the information from.
 
 **EXAMPLE**
 
-```
+```javascript
 var  myNotifications= AppMobiCloud.notification.getNotificationList();
 var len=myNotifications.length;
 if(len > 0) {
@@ -358,16 +358,16 @@ if(len > 0) {
 ####readPushNotifications
 
  Use this method to update notifications status on the server as read by user.
-```
+```javascript
 AppMobiCloud.notification.readPushNotifications(notificationIDs);
 ```
- 
+
 **Parameters**
 
 **notificationIDs :** A pipe (“|”) delimited list of notification ids to mark as read and remove from the system. The event object includes a “success” property that is set to true or false. This event will additionally include a “message” property describing the response from server.
 
 **EXAMPLE**
-```
+```javascript
 AppMobiCloud.notification.readPushNotifications = function(notificationIDs) {
  if( notificationIDs == undefined || notificationIDs == "")
  {
@@ -377,31 +377,31 @@ AppMobiCloud.notification.readPushNotifications = function(notificationIDs) {
  ```
 
  **appMobi.notification.push.enable**
- 
+
  This event is fired once a user’s credentials have been confirmed by the application and push notifications are enabled.
- 
+
 **appMobi.notification.push.receive**
 
 This event is fired once the application has gotten a push notification.
 
  **appMobi.notification.push.disable**
- 
+
  This event is fired once the user is signed out of the pushMobi messaging system.
- 
+
  **appMobi.notification.push.delete**
- 
+
  This event is fired once a push notification is removed from the messaging system.
-	 
+
  **appMobi.notification.push.send**
- 
+
  This event is fired once a push notification is sent from an applicat
- 
+
  **appMobi.notification.push.refresh**
- 
+
  This event is fired once the notification system refreshes the data on an application.
- 
+
  **appMobi.notification.push.user.editattributes**
- 
+
  This event is fired once further demographic information is associated with a user.
 
 
@@ -411,12 +411,12 @@ This event is fired once the application has gotten a push notification.
 ####addPushUser
 
  Use this method to register a new user on a particular appMobi application.
- 
-```
+
+```javascript
 AppMobiCloud.notification.addPushUser(userID,password,email);
 ```
 
-**Parameters**	
+**Parameters**
 
  - **userID** : A unique string (per appMobi application) for this user to be addressable in the push system. The user id may not contain spaces or periods.
  - **password**  : The user’s chosen password for the push system. The password may not contain spaces or periods.
@@ -424,7 +424,7 @@ AppMobiCloud.notification.addPushUser(userID,password,email);
 
 **EXAMPLE**
 
-```
+```javascript
 /* This code runs when user want to be registered */
 function addPushUser(){
              var user = prompt("Please enter username", "testUser");
@@ -433,22 +433,22 @@ function addPushUser(){
              AppMobiCloud.notification.addPushUser(user,pwd,email);
          }
 ```
- 
+
 ####editPushUser
 
  Use this method to change the email address and the password associated with the push notification of an appMobi application.
 
-```
+```javascript
 AppMobiCloud.notification.editPushUser(newEmail,newPassword);
 ```
 
-**Parameters :** 
+**Parameters :**
 
  - **newEmail** : The new email address that the sendPushUserPass command will use to notify users about their userID and password information.
  - **newPassword**  : The user’s chosen password for the push system. The password must not contain spaces or periods.
- 
+
  **EXAMPLE**
- ```
+ ```javascript
 document.addEventListener("appMobi.notification.push.user.edit",pushMobi.onPushNotificationEvent,false);
  onPushNotificationEvent: function (data) {
           if (data.success == false) {
@@ -463,29 +463,29 @@ function editPushUser(){
               AppMobiCloud.notification.editPushUser(email,pwd);
           }
 ```
- 
+
 ####findPushUser
 
  Use this method to allow users to find users of an appMobi application. It provides a kind of “friends” functionality.
 
-```
+```javascript
 AppMobiCloud.notification.findPushUser(userID,emailAddress);
 ```
 
-**Parameters :** 
+**Parameters :**
 
  - **userID** : A unique user id to look for in the messaging database of the application.
  - **emailAddress**  : An email address to look for in the messaging database of the application.
- 
- **EXAMPLE :** 
-```
+
+ **EXAMPLE :**
+```javascript
 function findPushUserByUsername(){
         var user = prompt(“Please enter username”, “testUser”); AppMobiCloud.notification.findPushUserByUsername(user);
     }
     function findPushUserByEmail(){
             var email = prompt(“Please enter email”, “abc@appmobi.com”); AppMobiCloud.notification.findPushUserByEmail(email);
         }
-        document.addEventListener(“appMobi.notification.push.user.find”,updateNotificationEvent,false); 
+        document.addEventListener(“appMobi.notification.push.user.find”,updateNotificationEvent,false);
         var updateNotificationEvent=function(event) {
     if(event.success==false) {
         alert(“error: ” + event.message)
@@ -496,13 +496,13 @@ function findPushUserByUsername(){
 ```
 
 **appMobi.notification.push.user.edit**
- 
+
  This event is fired once a user changes their email address or password in the notification system.
- 
+
  **appMobi.notification.push.user.find**
 
  This event is fired following a request by an application to find other users of the application.
- 
+
 **appMobi.notification.push.sendpassword**
 
  This event is fired once a request is made by a user to have their notifications password emailed to them.
@@ -512,8 +512,8 @@ function findPushUserByUsername(){
 ##References
 ----------
  -  [Appmobi Official Website](https://www.appmobi.com/)
- -  [Appmobi Documentation](https://docs.appmobi.com/) 
- -  [Apache Cordova](https://cordova.apache.org/) 
+ -  [Appmobi Documentation](https://docs.appmobi.com/)
+ -  [Apache Cordova](https://cordova.apache.org/)
 
 ##Supported Platforms
 ----------
